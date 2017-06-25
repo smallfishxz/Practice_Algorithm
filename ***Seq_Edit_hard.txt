@@ -1,0 +1,146 @@
+SequenceEdit
+[edit]DISCLAIMER 
+
+This question is too hard for a typical ninja.  Please don't use it unless you know what you're doing (which means don't use it, probably). 
+
+[edit]Background
+
+This is a pretty straight forward Ninja question suitable for any language.  Easy to understand, a few tricky cases, plenty of room for clever solutions and for a candidate to really goof up.  It seems simple but by restricting the ability to examine sequence length, it turns out to get a little trickier.
+
+This was based on the Engineering/Interviewing/Ninja/EditDistanceFunction question which is now retired.
+
+[edit]The Question
+
+Given a class representing a network sequence, write a function that takes two sequences and returns true if the sequences are identical or differ in exactly one way: one has an added value, one has a removed value, or the same position in both sequences is different.
+
+As these are bytes over the network, you can only ask for the next value of a sequence once, cannot backtrack, and don't have enough memory to buffer either sequence. It is valid to track current and previous values.
+
+class NetworkSequence {
+  int next();  // returns 0 at end-of-sequence
+  // ...
+}
+
+bool f(NetworkSequence s1, NetworkSequence s2);
+
+f({1,2,3,0}, {1,2,4,0}) == true
+f({1,2,3,0}, {1,2,0}) == true
+f({1,2,3,0}, {1,2,3,4,0}) == true
+f({1,2,3,0}, {1,2,4,5,0}) == false
+f({1,2,3,0}, {3,1,2,0}) == false
+[edit]Solution
+
+The idea is to walk each sequence and track which of the three options is still viable.  Once none are viable, return false.  Return true if any are still viable and both sequences have been exhausted. For one who is familiar with nondeterministic automata, this is exactly the case here.
+
+Things to note:
+
+Does their solution stop as quickly as possible?
+Do they properly consume the tail of the sequence?
+Do they track the states properly?
+Hard case:
+
+There is one single hard case most "solution" will stuck on. Try f({1,2,1,2,0},{2,1,2,1,0}), f({1,2,1,2,1,0},{2,1,2,1,0}) and f({1,2,1,2,0},{2,1,2,1,2,0}).
+Warning-2x.png  Warning! Use with caution. Most candidates will be trapped on this hard case, and do not know how to move forward. If s/he doesn't have any training on algorithms or computation theory in the past (happens for most non-CS majored candidates), usually s/he cannot get out of the trap even with hints. It is better to move to another problem in this case.
+[edit]Extension
+
+If a candidate can get a solution without any hassle, the extension question is to ask how to do it for 2/3/arbitrary distance k. The solution should be the same, but more complicated as one needs to maintain ~3^k states.
+
+[edit]Sample Solutions
+
+Java
+
+public interface NetworkSequence {
+   int next();
+}
+
+public class SequenceEdit {
+    boolean isDistanceOneOrLess(NetworkSequence a, NetworkSequence b) {
+        int nexta = 0, nextb = 0;
+        int preva = 0, prevb = 0;
+
+        int state = 1;
+        final int STATE_START = 1;
+        final int STATE_CHANGE = 2;
+        final int STATE_FIRST = 4;
+        final int STATE_SECOND = 8;
+
+        while (true) {
+            preva = nexta;
+            prevb = nextb;
+            nexta = a.next();
+            nextb = b.next();
+
+            if ((state & STATE_START) != 0) {
+                // if STATE_START, no other states are possible
+                if (nexta != nextb) {
+                    state = STATE_CHANGE | STATE_FIRST | STATE_SECOND;
+                }
+            } else {
+                if ((state & STATE_CHANGE) != 0) {
+                    if (nexta != nextb) {
+                        state ^= STATE_CHANGE;
+                    }
+                }
+
+                if ((state & STATE_FIRST) != 0) {
+                    if (nexta != prevb) {
+                        state ^= STATE_FIRST;
+                    }
+                }
+
+                if ((state & STATE_SECOND) != 0) {
+                    if (preva != nextb) {
+                        state ^= STATE_SECOND;
+                    }
+                }
+
+                if (state == 0) {
+                    return false;
+                }
+            }
+
+            if (nexta == 0 && nextb == 0) {
+                break;
+            }
+        }
+
+        return true;
+    }
+
+    public static class SequenceSimulator implements NetworkSequence {
+        private int pos;
+        private int[] list;
+
+        public SequenceSimulator(int[] list) {
+            this.list = list;
+            pos = 0;
+        }
+
+
+        @Override
+        public int next() {
+            if (pos >= list.length) {
+                return 0;
+            }
+            assert list[pos] != 0;
+            return list[pos++];
+        }
+    }
+
+    public static void main(String[] args) {
+        SequenceEdit edit = new SequenceEdit();
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1}), new SequenceSimulator(new int[]{}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2}), new SequenceSimulator(new int[]{}))); // false
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 3}), new SequenceSimulator(new int[]{1}))); // false
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 3, 4}), new SequenceSimulator(new int[]{4, 3, 2, 1}))); // false
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 3}), new SequenceSimulator(new int[]{2, 3}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 1, 2}), new SequenceSimulator(new int[]{1, 2, 1, 2}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 1, 2}), new SequenceSimulator(new int[]{2, 1, 2, 1}))); // false
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 1, 2}), new SequenceSimulator(new int[]{2, 1, 2, 1, 2}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 1, 2}), new SequenceSimulator(new int[]{2, 1, 2, 1, 2, 1}))); // false
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{1, 2, 1, 2}), new SequenceSimulator(new int[]{2, 1, 2}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{2, 2, 2, 2}), new SequenceSimulator(new int[]{2, 2, 2}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{2, 2, 2, 2}), new SequenceSimulator(new int[]{2, 2, 2, 2}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{2, 2, 2, 2}), new SequenceSimulator(new int[]{2, 2, 2, 2, 2}))); // true
+        System.out.println(edit.isDistanceOneOrLess(new SequenceSimulator(new int[]{2, 2, 2, 2}), new SequenceSimulator(new int[]{2, 2, 2, 2, 2, 2}))); // false
+    }
+}
