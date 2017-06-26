@@ -1,25 +1,14 @@
 def add(x,y):
-        maxlen = max(len(x), len(y))
-
-        #Normalize lengths
-        x = x.zfill(maxlen)
-        y = y.zfill(maxlen)
-
-        result = ''
-        carry = 0
-
-        for i in range(maxlen-1, -1, -1):
-            r = carry
-            x_bit = x[i] & 1
-            y_bit = y[i] & 1
-            
-
-
-        return result.zfill(maxlen)
-        # return result
-
-print add_0('1','111')        
-print add('1','111')}
+#         Iterate till there is no carry
+        while y != 0:
+#                 carry now contains common set bits of x and y
+                carry = x & y
+#         sum of bits of x and y where at least one of the bits is not set
+                x = x ^ y
+#         carry is shifted by one so that adding it to x gives the required sum
+                y = carry << 1
+        return x
+        
 
 # unsigned int add_slow(unsigned int i, unsigned int j) {
 #  unsigned result = 0;
