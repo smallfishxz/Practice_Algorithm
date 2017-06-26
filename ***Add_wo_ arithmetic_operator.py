@@ -1,15 +1,26 @@
-def add(x,y):
-#         Iterate till there is no carry
-        while y != 0:
-#                 carry now contains common set bits of x and y
-                carry = x & y
-#         sum of bits of x and y where at least one of the bits is not set
-                x = x ^ y
-#         carry is shifted by one so that adding it to x gives the required sum
-                y = carry << 1
-        return x
-        
+# http://campuscoke.blogspot.com/2014/12/add-two-numbers-without-using.html
 
+def add(a,b):
+        while (1): 
+                sum = a ^ b
+                carry = a & b
+                carry = carry << 1
+                if carry == 0:
+                        break
+                else:
+                        a = sum
+                        b = carry
+        return sum
+        
+# alternative: http://www.geeksforgeeks.org/add-two-numbers-without-using-arithmetic-operators/
+def add (a,b):
+        while (b != 0):
+                carry = a & b
+                a = a ^ b
+                b = carry << 1
+        
+        
+# official answer
 # unsigned int add_slow(unsigned int i, unsigned int j) {
 #  unsigned result = 0;
 #  unsigned mask = 1;
