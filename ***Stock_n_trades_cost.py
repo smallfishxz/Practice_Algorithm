@@ -1,3 +1,7 @@
+# Following the same question (unlimited buy-sell transactions), 
+# each trade costs n dollars. so making fewer trades matters 
+# int findProfit(int * input, int cost)
+
 # int findProfit(int[] input, int cost) {
 #   if (input.length == 0) { 
 #     return 0; 
