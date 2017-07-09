@@ -10,3 +10,6 @@ def topK(A,k):
   return h
   
 print(topK([10,7,6,5],3))
+
+# Python heap implementation: 
+# http://interactivepython.org/runestone/static/pythonds/Trees/BinaryHeapImplementation.html#fig-percup
