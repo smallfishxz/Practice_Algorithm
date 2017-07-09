@@ -9,3 +9,5 @@ def insert_sort(A):
   return A
  
 print(insert_sort([12, 11, 13, 5, 6]))
+
+# Insert sort reference: http://www.geeksforgeeks.org/insertion-sort/
