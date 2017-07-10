@@ -42,6 +42,42 @@ def find_sub_1(input,pattern):
   if start_index == -1:
     return -1
   return input[start_index:start_index+min_len]
+
+def find_sub_2(input,pattern):
+  l1=len(input)
+  l2=len(pattern)
+  
+  if l1<l2:
+    return -1
+  
+  hash_i={c:0 for c in set(input)}
+  hash_p={c:0 for c in set(pattern)}
+  
+  for c in pattern:
+    hash_p[c]+=1
+  
+  count = 0
+  start = 0
+  min_len = sys.maxsize
+  start_index = -1
+  
+  for j in range(l1):
+    hash_i[input[j]]+=1
+    if input[j] in hash_p and hash_i[input[j]] <= hash_p[input[j]]:
+      count+=1
+    if count==len(hash_p):
+      while hash_i[input[start]] > hash_p[input[start]] or hash_p[input[start]]==0:
+        if hash_i[input[start]] > hash_p[input[start]]:
+          hash_i[input[start]]-=1
+        start+=1
+      window_len = j-start+1
+      if min_len > window_len:
+        min_len = window_len
+        start_index = start
+  
+  if start_index == -1:
+    return -1
+  return input[start_index:start_index+min_len]
   
 # print(find_sub('aaccbcd','abc'))
 
