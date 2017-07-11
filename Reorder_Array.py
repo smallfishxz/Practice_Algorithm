@@ -1,16 +1,18 @@
 
-Given a function that takes as input two arrays of the same length, A and O, reorder A according to the elements in O. The A array is an array of opaque objects. The O array contains the ordering information such that each element in O indicates the position the corresponding element in A belongs in. On input, the two arrays are given. On completion, the caller expects A to be re-ordered and does not care about O (i.e. the function can do whatever it wants to O). I give the following function prototype and sample data:
+# Given a function that takes as input two arrays of the same length, A and O, reorder A according to the elements in O. 
+# The A array is an array of opaque objects. 
+# The O array contains the ordering information such that each element in O indicates the position the corresponding element in A belongs in. 
+# On input, the two arrays are given. On completion, the caller expects A to be re-ordered and does not care about O 
+# (i.e. the function can do whatever it wants to O). I give the following function prototype and sample data:
 
-void reorder(Object[] A, int[] O) {
-}
- 	 0 	 1 	 2 	 3 	 4
-A 	 E 	 A 	 B 	 D 	 C
-O 	 4 	 0 	 1 	 3 	 2
-I use letters in the sample data to demonstrate that if the A array were reordered according to the O array, it would be alphabetically ordered:
+#  	 0 	 1 	 2 	 3 	 4
+# A 	 E 	 A 	 B 	 D 	 C
+# O 	 4 	 0 	 1 	 3 	 2
+# I use letters in the sample data to demonstrate that if the A array were reordered according to the O array, it would be alphabetically ordered:
 
- 	 0 	 1 	 2 	 3 	 4
-A 	 A 	 B 	 C 	 D 	 E
-I make it clear that the elements in A are not actually letters -- they are opaque objects.
+#  	 0 	 1 	 2 	 3 	 4
+# A 	 A 	 B 	 C 	 D 	 E
+# I make it clear that the elements in A are not actually letters -- they are opaque objects.
 
 def reorder_1(A,B):
   i=0
