@@ -1,14 +1,14 @@
-A perfect square is an integer that is the product of an integer multiplied by itself. i.e. n**2 for any integer n. e.g. [0, 1, 4, 9, 16, 25 . . .].
+# A perfect square is an integer that is the product of an integer multiplied by itself. i.e. n**2 for any integer n. e.g. [0, 1, 4, 9, 16, 25 . . .].
 
-Write a function that takes an integer and returns True if the integer is a perfect square, and False otherwise.
-Write the same function without using the square root function. What's the runtime of that solution (using big-oh notation)?
-Improve the runtime of that function.
-What's the best we could do? i.e. how do you think sqrt is implemented? 
+# Write a function that takes an integer and returns True if the integer is a perfect square, and False otherwise.
+# Write the same function without using the square root function. What's the runtime of that solution (using big-oh notation)?
+# Improve the runtime of that function.
+# What's the best we could do? i.e. how do you think sqrt is implemented? 
 
 
-A good candidate will write, in this order: O(n), O(sqrt(n)), O(log(n)) solutions, although it may take some leading to get them to realize that without recourse to numerical trickiness, this is basically a search problem over a sorted range, and therefore amenable to a modified binary search. Bonus points for numerical trickiness (e.g. Newton-Raphson, knowledge of Carmack's hack), but those things are totally not expected.
+# A good candidate will write, in this order: O(n), O(sqrt(n)), O(log(n)) solutions, although it may take some leading to get them to realize that without recourse to numerical trickiness, this is basically a search problem over a sorted range, and therefore amenable to a modified binary search. Bonus points for numerical trickiness (e.g. Newton-Raphson, knowledge of Carmack's hack), but those things are totally not expected.
 
-There are a spectrum of answers, which I've attempted to capture below.
+# There are a spectrum of answers, which I've attempted to capture below.
 
 # O(n)
 def is_square_0(n):
