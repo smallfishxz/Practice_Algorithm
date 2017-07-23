@@ -46,3 +46,13 @@ def find_count(A):
     return count
 
 print(find_count('11'))
+
+# Edge cases: Zero needs to be handled specially as shown in the code above. This surprisingly trips up a few people. Make sure the candidate realizes that and has a reasonable solution for it. It shows capability for attention to detail. If the candidate has the basic structure right and ends up spending too much time in the corner cases, I usually just go to the complexity analysis (see next section) and come back to this at the end.
+
+# Gotchas: I've seen several people add an extra 1 to the formula as in $count = 1 + countPerms($num, 1, $len - 1); This is wrong. If you ask them to run their algorithm on a small input, they should realize the mistake quickly.
+
+# [edit]Complexity Analysis
+
+# Time complexity: Exponential. Roughly O(2^n) since for a string of length n, we have 2 sub-problems of size n-1 & n-2. Strictly speaking, the complexity is fibonacci(n) since the recurrence relation for the worst case is exactly the fibonacci sequence.
+
+# Space Complexity: Linear. Since it is recursive and depth of stack is O(n)
