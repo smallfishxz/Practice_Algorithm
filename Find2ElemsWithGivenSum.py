@@ -30,5 +30,14 @@ def solution3(input, sum):
         dic[input[i]] = True
     return False
     
-
+def solution4(input, sum):
+    s = set()
+    for i in range(0,len(input)):
+        if (sum-input[i]) in s:
+            return True
+        s.add(input[i])
+    return False
+    
+print(solution4([1,2,4], 3))
+    
 print solution3([1,2,4], 3)
