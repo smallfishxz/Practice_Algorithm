@@ -101,3 +101,12 @@ g.print_graph_fb2()
 
 rpl_g = clone_l_fb(g)
 rpl_g.print_graph_fb()
+
+# Follow up questions 
+
+# Time complexity: O(|V| + |E|).
+# Rationale: the inner section of the double loop happens exactly once per edge.
+# Some candidates will say it is O(|V||E|). That's fine if they are fresh undergrads (let them fix that), but probably not acceptable if they come from CS theory background.
+# The choice of the mapping mechanism is important here: hash_map allows query in O(1) time, while maps requires O(log(|V|)) (since the internal implementation is of a balanced binary tree). Bonus points if they can tell the difference.
+# Space complexity: O(V)
+# Rationale: the cost of holding the hash_map
