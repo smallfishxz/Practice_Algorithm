@@ -1,0 +1,17 @@
+sparse graph
+
+|E| = |V|
+
+Dense graph
+|E| = |V|*|V|
+
+Adjacency list:
+Pros: faster and less space for sparse graph
+Cons: slower for dense graph
+
+Adjacency matrix:
+Pros: easy for weighted graph
+Pros: faster for dense graph
+Cons: Use more space
+
+
