@@ -1,3 +1,6 @@
+# Reference: Very good tutorial video on graph representation in python for both adjacency list and adjacency matrx
+# Source code are under https://github.com/joeyajames/Python
+
 class Vertex:
   def __init__(self, data):
     self.data = data
