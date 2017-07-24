@@ -63,6 +63,7 @@ class Graph_l_fb:
 def clone_l_fb(G1):
   G2 = Graph_l_fb()
   old2new = {}
+  # Create all new vertices in G2, and build up the mapping between old_v and new_v
   for v_old in G1.vertices:
     v_new = Vertex_fb(v_old.data)
     old2new[v_old] = v_new
@@ -71,6 +72,8 @@ def clone_l_fb(G1):
     G2.vertices.append(v_new)
   print(old2new)
   
+  # loop through neighbours of each old_v, 
+  # and rebuild the same neighbours for new_v based on the mapping between old_v and new_v
   for v_old in G1.vertices:
     for neighbour in v_old.neighbours:
       # print(old2new[v_old])
