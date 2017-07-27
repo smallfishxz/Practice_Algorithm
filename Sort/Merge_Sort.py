@@ -1,3 +1,5 @@
+# Reference: http://www.geeksforgeeks.org/merge-sort/
+
 # Python program for implementation of MergeSort
  
 # Merges two subarrays of arr[].
