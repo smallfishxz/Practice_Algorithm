@@ -1,4 +1,4 @@
-# Reference: http://www.geeksforgeeks.org/selection-sort/
+# Reference: http://www.geeksforgeeks.org/insertion-sort/
 
 def insertion_sort(A):
   # Traverse through 1 to len(arr)
