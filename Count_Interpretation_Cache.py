@@ -13,18 +13,15 @@ def find_count(A, pos, cache):
     ll = len(A)
     
     if pos==ll:
-        return 1
-    
-    if A[pos]=='0':
-        return 0
-    
-    if pos==ll-1:
-        return 1
-    
-    count=find_count(A, pos+1, cache)
-    
-    if int(A[pos:pos+2])<=26:
-        count+=find_count(A, pos+2, cache)
+        count = 1
+    elif A[pos]=='0':
+        count = 0
+    elif pos==ll-1:
+        count = 1
+    else:
+        count=find_count(A, pos+1, cache)
+        if int(A[pos:pos+2])<=26:
+            count+=find_count(A, pos+2, cache)
     
     cache[pos] = count
     print(cache)
