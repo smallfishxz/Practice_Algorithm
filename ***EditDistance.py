@@ -56,6 +56,8 @@ Def OneEditApart(string s1, string s2):
   return saw_difference or size_delta > 0 
   # return saw_difference or size_delta = 1
   # Why should have the or logic?
+  # 'cat' vs. 'cab': return saw_difference = True or size_delta > 0 = False
+  # 'cat' vs. 'cate': return saw_difference = False or size_delta > 0 = True
   
 # Where People Fail
 
