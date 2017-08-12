@@ -50,16 +50,18 @@ def parse(tree, p):
         if right:
             parse(right, path)
 
-# To improve memory usage and avoid copy the path, add a pop function so that whenever the recursive call goes up one level to its caller, the corresponding tree node value is popped up from the current path, otherwise, you will get A-B-D, A-B-D-C-E, A-B-D-C-E-F. 
-# This problem doesn't eixst when you have a local copy of the path for each recursive call, then the passed input parameter p wont be changed.
+# To improve memory usage and avoid copy the path, add a pop function so that whenever the recursive call goes up one level 
+# to its caller, the corresponding tree node value is popped up from the current path, otherwise, you will get 
+# A-B-D, A-B-D-C-E, A-B-D-C-E-F. 
+# This problem doesn't eixst when you have a local copy of the path for each recursive call, then the passed input parameter p 
+# wont be changed, as in above parse function.
 def parse1(tree, path):
-    print(path)
+#     print(path)
     path.append(str(tree.root))
-    print(path)
+#     print(path)
     if tree.left == None and tree.right == None:
         print('-'.join(path))
-    else: 
-        
+    else:   
         left = tree.left
         if left:
             parse1(left, path)
