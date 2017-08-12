@@ -1,3 +1,5 @@
+# http://www.geeksforgeeks.org/write-a-c-program-to-get-count-of-leaf-nodes-in-a-binary-tree/
+
 class Tree:
     def __init__(self, root, left=None, right=None):
         self.root = root
