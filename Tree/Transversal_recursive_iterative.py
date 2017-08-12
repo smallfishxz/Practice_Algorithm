@@ -36,7 +36,29 @@ def print_tree_preorder_interative(tree):
       if node.left is not None:
         nodestack.append(node.left)
 
+def print_tree_inorder(tree):
+    if tree == None: return
+    print_tree_inorder(tree.left)
+    print(tree.root)
+    print_tree_inorder(tree.right)
 
+
+def print_tree_inorder_iterative(tree):
+  if tree == None: return
+  node = tree
+  nodestack = []
+  while node is not None:
+    nodestack.append(node)
+    node = node.left
+  
+  while len(nodestack) > 0:
+    node = nodestack.pop()
+    print(node.root)
+    if node.right is not None:
+      node = node.right
+      while node is not None:
+        nodestack.append(node)
+        node = node.left
 
 sub_tree_r = Tree('C', Tree('E'), Tree('F'))
 sub_tree_l = Tree('B', Tree('D'))
