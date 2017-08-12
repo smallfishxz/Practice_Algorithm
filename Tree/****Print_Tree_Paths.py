@@ -70,6 +70,9 @@ def parse1(tree, path):
             parse1(right, path)
     print(path.pop())
 
+# Iterative print full path: 
+# https://www.quora.com/How-do-I-print-all-root-to-leaf-paths-in-binary-tree-iteratively/answer/Siddharth-Teotia?srid=TLNE   
+    
 sub_tree_r = Tree('C', Tree('E'), Tree('F'))
 sub_tree_l = Tree('B', Tree('D'))
 T = Tree('A', sub_tree_l, sub_tree_r)
