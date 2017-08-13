@@ -55,25 +55,24 @@ def mergeSort(arr,l,r):
  
         # Same as (l+r)/2, but avoids overflow for
         # large l and h
-        m = (l+(r-1))/2
+        m = (l+(r-1))//2
  
         # Sort first and second halves
         mergeSort(arr, l, m)
         mergeSort(arr, m+1, r)
         merge(arr, l, m, r)
- 
- 
+  
 # Driver code to test above
 arr = [12, 11, 13, 5, 6, 7]
 n = len(arr)
 print ("Given array is")
 for i in range(n):
-    print ("%d" %arr[i]),
+    print (arr[i])
  
 mergeSort(arr,0,n-1)
 print ("\n\nSorted array is")
 for i in range(n):
-    print ("%d" %arr[i])
+    print (arr[i])
 
 # Time Complexity: Sorting arrays on different machines. Merge Sort is a recursive algorithm and time complexity can be expressed as following recurrence relation.
 # T(n) = 2T(n/2) + \Theta(n)
