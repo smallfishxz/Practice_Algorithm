@@ -71,7 +71,40 @@ def parse1(tree, path):
     print(path.pop())
 
 # Iterative print full path: 
-# https://www.quora.com/How-do-I-print-all-root-to-leaf-paths-in-binary-tree-iteratively/answer/Siddharth-Teotia?srid=TLNE   
+# https://www.quora.com/How-do-I-print-all-root-to-leaf-paths-in-binary-tree-iteratively/answer/Siddharth-Teotia?srid=TLNE  
+# The following code is still referred to the solution provided in the internal wiki
+def print_all_path1(tree):
+  nodestack = []
+  # Maintain a seen dictionary to keep track of the visited status of nodes along the transversal
+  seen = dict()
+  if tree == None:
+    return
+  # push the root node of the tree into the nodestack
+  nodestack.append(tree)
+  seen[tree.root] = True
+  # transverse the entire tree
+  while len(nodestack) > 0:
+    # peek from the nodestack
+    tmp = nodestack[len(nodestack)-1]
+    # if peak node is a leaf node, print everything in the nodestack
+    if tmp.left == None and tmp.right == None:
+      print('-'.join(map(node_value, nodestack)))
+    
+    # if peak node has left node and it is unvisited, push to nodestack and set seen status
+    if tmp.left is not None and tmp.left.root not in seen:
+      seen[tmp.left.root] = True
+      nodestack.append(tmp.left)
+      print(seen)
+      print('-'.join(map(node_value, nodestack)))
+   # if peak node has right node and it is unvisited, push to nodestack and set seen status
+    elif tmp.right is not None and tmp.right.root not in seen:
+      seen[tmp.right.root] = True
+      nodestack.append(tmp.right)
+      print(seen)
+      print('-'.join(map(node_value, nodestack)))
+  # if peak node is leaf node, or it has left/right node but visited already, it doesn't need to be stored in the nodestack, so pop it
+    else:
+      nodestack.pop()
     
 sub_tree_r = Tree('C', Tree('E'), Tree('F'))
 sub_tree_l = Tree('B', Tree('D'))
