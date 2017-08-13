@@ -68,7 +68,7 @@ def parse1(tree, path):
         right = tree.right
         if right:
             parse1(right, path)
-    print(path.pop())
+    path.pop()
 
 # Iterative print full path: 
 # https://www.quora.com/How-do-I-print-all-root-to-leaf-paths-in-binary-tree-iteratively/answer/Siddharth-Teotia?srid=TLNE  
