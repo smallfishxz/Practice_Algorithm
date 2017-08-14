@@ -130,3 +130,4 @@ T = Tree('A', sub_tree_l, sub_tree_r)
 
 # print_tree_indented(T,0)
 parse1(T,[])
+# print_all_path_indent(T, [], 1)
