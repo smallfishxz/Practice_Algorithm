@@ -9,6 +9,9 @@ class Tree:
     def __str__(self):
         return str(self.root)
 
+def node_value(node):
+  return node.root
+
 def print_tree_preorder(tree):
     if tree == None: return
     print(tree.root)
