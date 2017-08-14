@@ -6,6 +6,8 @@ class tree():
   
 def node_value(node):
   return node.root
+
+# reference: http://www.geeksforgeeks.org/write-an-efficient-c-function-to-convert-a-tree-into-its-mirror-tree/
 # convert tree to its mirror tree
 def mirror_tree(tree):
   # base case: tree is empty
@@ -27,6 +29,7 @@ def print_tree_preorder(tree):
   print_tree_preorder(tree.left)
   print_tree_preorder(tree.right)
 
+# reference: http://www.geeksforgeeks.org/check-if-two-trees-are-mirror/
 # Decide whether two trees are mirror to each other
 # If they are, it means that the following conditions are all met:
 # 1. tree a root value = tree b root value
