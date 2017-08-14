@@ -105,6 +105,24 @@ def print_all_path1(tree):
   # if peak node is leaf node, or it has left/right node but visited already, it doesn't need to be stored in the nodestack, so pop it
     else:
       nodestack.pop()
+
+# In order to beautifully print with indent, have one more paramater for level
+def print_all_path_indent(tree, path, level):
+  path = path[:]
+  # when push a node to path, make it a tuple (node value, node level)
+  path.append((tree.root, level))
+  # Base case for leaf node
+  if tree.left == None and tree.right == None:
+    # When printing the leaf node, have the indent printed out
+    for item in path:
+      print(' ' * item[1] + item[0])
+  # recursive case for left child
+  if tree.left is not None:
+    print_all_path_indent(tree.left, path,level+1)
+  # recursive case for right child
+  if tree.right is not None:
+    print_all_path_indent(tree.right, path, level+1)
+  # path.pop()
     
 sub_tree_r = Tree('C', Tree('E'), Tree('F'))
 sub_tree_l = Tree('B', Tree('D'))
