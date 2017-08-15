@@ -63,7 +63,7 @@ def height2(tree):
   # start from tree root to push it to node queue
   que.append(tree)
   
-  # Just a very small change to the iterative tree height function, that is, to have a variable to record the count of nodes in the current level, so that we could maintain a queue to always include nodes at the same level
+  # Just a very small change to the iterative level transversal function, that is, to have a variable to record the count of nodes in the current level, so that we could maintain a queue to always include nodes at the same level
   while len(que) > 0:
     print('-'.join(map(node_value, que)))
     node_count = len(que) # minor change to height function
