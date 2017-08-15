@@ -51,6 +51,29 @@ def leftViewUtil(tree, level):
 # A wrapper over leftViewUtil()
 def leftView(tree):
     leftViewUtil(tree, 1)
+    
+# Solution for global variables example from geeksforgeeks:
+# Recursive function pritn left view of a binary tree
+def leftViewUtil1(root, level, max_level):
+     
+    # Base Case
+    if root is None:
+        return
+ 
+    # If this is the first node of its level
+    if (max_level[0] < level):
+        print(root.root),
+        max_level[0] = level
+ 
+    # Recur for left and right subtree
+    leftViewUtil(root.left, level+1, max_level)
+    leftViewUtil(root.right, level+1, max_level)
+ 
+ 
+# A wrapper over leftViewUtil()
+def leftView1(root):
+    max_level = [0]
+    leftViewUtil1(root, 1, max_level)
 
 sub_tree_r = Tree('C', Tree('E'), Tree('F'))
 sub_tree_l = Tree('B', Tree('D'))
