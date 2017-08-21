@@ -1,5 +1,0 @@
-To form a new linkedlist from Node class:
-1. If appending new node to tail, initialize a node as fakenode, use a p to keep growing node, and in the end to return fakenode.next
-2. If inserting new node to head, initialize a head node as None, generate new node n, point n.next to head and head node to n
-
-If you have a class linkedlist with head, things will be easier.
