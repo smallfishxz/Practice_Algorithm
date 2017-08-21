@@ -32,6 +32,6 @@ def merge_list(l1, l2):
   return result
 
 def merge_list1(l1, l2):
-  return sort(set(l1+l2))
+  return sorted(set(l1+l2))
 result = merge_list([1,1,2,4], [2,3,5])
 print(result)
