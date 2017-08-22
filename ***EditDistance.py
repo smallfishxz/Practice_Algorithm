@@ -7,7 +7,7 @@
 # bool OneEditApart(string s1, string s2);
 # That returns true if two words are exactly one edit apart, where an edit is:
 
-# Insert one character anywhere in the word (including at the beginning and end)
+# Insert one character anywhere in the word (including at the beginning and end)  
 # Remove one character
 # Replace exactly one character
 # Examples:
