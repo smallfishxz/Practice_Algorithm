@@ -10,96 +10,71 @@ def find_sub(input, pattern):
         return window
   return -1
 
-def find_sub_1(input,pattern):
-  l1=len(input)
-  l2=len(pattern)
+def find_sub(input, pattern):
   
-  if l1<l2:
+  if len(input) < len(pattern):
     return -1
   
-  hash_i={c:0 for c in set(pattern)}
-  hash_p={c:0 for c in set(pattern)}
+  # build the dictionary for patter string
+  hash_p = {}
+  for p in pattern:
+    if p not in hash_p:
+      hash_p[p] = 1
+    else:
+      hash_p[p] += 1
   
-  for c in pattern:
-    hash_p[c]+=1
-  print(hash_p)
- 
+  hash_i={}
+  size = len(input)
   count = 0
   start = 0
-  min_len = sys.maxsize
+  min_window = sys.maxsize
   start_index = -1
-  
-  for j in range(l1):
-    if input[j] in hash_p:
-      hash_i[input[j]]+=1
-      print(input[j])
-      print(hash_i)
-      if hash_i[input[j]] <= hash_p[input[j]]:
-        count+=1
-    if count==l2:
-      while start<j and (input[start] not in hash_p or hash_i[input[start]] > hash_p[input[start]]):
-        if input[start] not in hash_p:
-          start+=1
-        elif hash_i[input[start]] > hash_p[input[start]]:
-          hash_i[input[start]]-=1
-          start+=1
-      window_len = j-start+1
-      if min_len > window_len:
-        min_len = window_len
-        start_index = start
-    print('count is {0}'.format(count))
-  
-  if start_index == -1:
-    return -1
-  return input[start_index:start_index+min_len]
-
-def find_sub_2(input,pattern):
-  l1=len(input)
-  l2=len(pattern)
-  
-  if l1<l2:
-    return -1
-  
-  hash_i={c:0 for c in input}
-  hash_p={c:0 for c in pattern}
-  
-  for c in pattern:
-    hash_p[c]+=1
-  print(hash_p)
-  
-  count = 0
-  start = 0
-  min_len = sys.maxsize
-  start_index = -1
-  
-  for j in range(l1):
-    hash_i[input[j]]+=1
-    print(input[j])
-    print(hash_i)
-    # print(hash_p[input[j]])
-    if input[j] in hash_p and hash_i[input[j]] <= hash_p[input[j]]:
-      count+=1
-    if count==l2:
-      print('start is {0}'.format(start))
-      print(hash_i[input[start]])
-      print(hash_p[input[start]])
-      while input[start] not in hash_p or hash_i[input[start]] > hash_p[input[start]] :
-        if input[start] not in hash_p:
-          start+=1
-        elif hash_i[input[start]] > hash_p[input[start]]:
-          hash_i[input[start]]-=1
-          start+=1
-      window_len = j-start+1
-      if min_len > window_len:
-        min_len = window_len
-        start_index = start
-      print(input[start_index:start_index+min_len])
-    print('count is {0}'. format(count))
+  # Iterate through input string
+  for i in range(size):
+    print('loop {}:'.format(i))
+    # build the dictionary for input string during each loop
+    if input[i] not in hash_i:
+      hash_i[input[i]] = 1
+    else:
+      hash_i[input[i]] += 1
     
-  
+    print(hash_i)
+    
+    # Count records how many characters in input string has matched with pattern. Increase the mactching count whenever a matching is found - char exists in pattern dictionary, and also the occurences in input dictionary is <= than the occurences in pattern dictionary
+    if input[i] in hash_p and hash_p[input[i]] >= hash_i[input[i]]:
+      count += 1
+    
+    # whenever a macthing is found, that is count == patten string length, start to shrink the window as much as possible
+    if count == len(pattern):
+      # loop through each charcter starting from the beginning of the string, and find the smallest window by shrinking under two conditions:
+      # 1. char is not in pattern dictionary
+      # 2. or, the occurences in input dictionary is bigger than occurences in pattern
+      while input[start] not in hash_p or hash_i[input[start]] > hash_p[input[start]]:
+        # under situation 2, update the input dictionary
+        if input[start] not in hash_p:
+          # increse the start char position if can shrink
+          start += 1
+        elif hash_i[input[start]] > hash_p[input[start]]:
+          hash_i[input[start]] -= 1
+          # increse the start char position if can shrink
+          start += 1
+        print('current hash_i is {}'.format(hash_i))
+    
+      # update window and the start index
+      window_len = i - start + 1
+      if window_len < min_window:
+        min_window = window_len
+        start_index = start
+      print('min_window, start_index: {}, {}'.format(min_window, start_index))
+      
+  # if start_index = -1, no matching found
   if start_index == -1:
     return -1
-  return input[start_index:start_index+min_len]
+  
+  return input[start_index: start_index+min_window]
+  
+# print(find_sub('adccbcd', 'abc'))
+print(find_sub('this is a test string','tist'))  
   
 # print(find_sub('aaccbcd','abc'))
 
