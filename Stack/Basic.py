@@ -1,3 +1,8 @@
+# reference to implement stack with list: 
+# http://interactivepython.org/runestone/static/pythonds/BasicDS/ImplementingaStackinPython.html
+
+
+# implement stack with linked list
 class Node:
   def __init__(self,initdata):
     self.data = initdata
