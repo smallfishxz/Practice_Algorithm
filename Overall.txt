@@ -1,0 +1,45 @@
+notes:
+
+
+Paste wiki links here.  
+
+For phone screen, choose any 1 EASY question for a warmup 
+(palindrome, SVN bisect, remove zeroes, find two elements, return random number not in array) 
+and then 1 MEDIUM question 
+(Count Interpretations, List Find Top N, Intersection of Two Sorted Arrays of Integers, List 3 Int Add to Zero, Dot Product of 
+Sparse Vectors, SpellCheckWithWildcard, Int to English, Sort Using Custom Alphabet). 
+
+For onsite, start with an EASY or MEDIUM question as an icebreaker and then move on to another MEDIUM difficulty question. 
+
+For truly awesome candidates, you can ask the HARD question as your final question to get signal on how awesome they really are.
+
+Problem Solving: 
+Candidate approached the problem in a logical manner. Understood the problem and came up with few options for solutions - Hash
+Map, maintain a dict of integers and maintain pointers across two inputs and traverse and he ended up with a recursive solution.
+He didn't needed ton of hints for coming up with the approach he was comfortable with however his execution was a miss. 
+Rating: Excellent / Good / Average / Below Average
+
+Coding:  
+
+Although he came up with an approach to solve, his implementation was very confusing (Recursion is one of the bad approaches 
+to this problem). He got into a bad loop while coding where he started to fit the test cases as he would code.  
+At the end the code became unusually complicated and even after trying to unblock midway to go the traversing route, 
+he continued on the solution. There were couple of bugs in his code as he was incrementing the wrong list for a non equal 
+lists but was able to fix that. The code was generally bug free but very difficult to read. 
+Rating: Excellent / Good / Average / Below Average
+
+Communication:  
+He was able to walk through the code as well as walked through the implementation, however he did not explain on certain 
+aspect of code when questioned. Also he did not take hints well when tried to nudge him to try a different approach. 
+Rating: Excellent / Good / Average / Below Average
+
+Summary: 
+Call out positives first, red flags second.  
+Submitting feedback contains 2 separate dimensions to capture your final decision:
+Hire / No Hire: whether or not the candidate should be hired based on the data that you gathered in your interview. 
+In the absence of data, we are all ‘no hire’ for a candidate. 
+Confidence: the confidence in your Hire / No Hire decision based on the data you gathered for the candidate and how clearly 
+the signals were when reading them. Confidence is not a further reflection of the candidate and whether they would be a good
+or bad hire. 
+
+Here is a markdown template for submitting well-formatted feedback in the tool.
