@@ -1,3 +1,5 @@
+#Write a function that takes a list of words as input, and returns a list of those words bucketized by anagrams.
+
 def anagrams(words):
     d = {}
     # each key in "d" is a sorted word, and each bucket is stored as a dict, to check for dupes
