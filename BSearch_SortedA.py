@@ -2,7 +2,7 @@ def b_search(A, n):
     l=0
     r=len(A)-1
     while l<=r:
-        mid = (l+r)//2
+        mid = l+(r-l)//2
         if A[mid]==n:
             return mid
         elif A[mid]<n:
