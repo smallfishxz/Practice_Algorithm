@@ -17,6 +17,9 @@
 
 # Usually finish solution 3 and consider all corner cases would be good hire signal.
 
+# Iterative reference: https://stackoverflow.com/a/4322353
+# recursive reference: 
+# https://crackinterviewtoday.wordpress.com/2010/03/05/count-the-number-of-occurrences-of-a-element-in-a-sorted-array/
 def find_first(A,n):
   l=0
   h=len(A)-1
