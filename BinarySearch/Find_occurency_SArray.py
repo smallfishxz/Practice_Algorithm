@@ -42,12 +42,12 @@ def find_last(A,n):
     if A[mid]==n and A[mid+1]>n:
      return mid
     elif A[mid]==n and A[mid+1]==n:
-      l=mid-1
+      l=mid+1
     elif A[mid]>n:
       h=mid-1
       # print(A[l:h])
     else:
-      l=mid-1
+      l=mid+1
       # print(A[l:h])
   return -1
 
