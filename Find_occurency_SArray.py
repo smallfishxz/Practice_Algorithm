@@ -1,5 +1,6 @@
 # Count of number K in Sorted Int ArrayeditEdittrashDelete
-# Have a sorted int array which might have repeated numbers, given number K, return count of K in the array. e.g. 12377799, K = 3 => 1, K = 7 => 3, K = 4 => 0.
+# Have a sorted int array which might have repeated numbers, given number K, return count of K in the array. 
+# e.g. 12377799, K = 3 => 1, K = 7 => 3, K = 4 => 0.
 
 # Difficulty:  Medium
 # Owner:  Yi Sun
