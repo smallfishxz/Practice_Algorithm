@@ -1,4 +1,5 @@
-# Is sorted array? dup elements allowed? 
+# Is sorted array? dup elements allowed? negative numbers?
+# test case should also include: single elments, empty array 
 
 # O(n*n)
 def solution(input, sum):
