@@ -11,6 +11,8 @@
 # Whenever fast points to a non-zero element, assign this one to the element pointed by the slow elements, only when slow doens't equal to fast (this is to avoid unnecessary assignment)
 
 # Time cmoplexity is O(N), and the sequence of non-zero elements are preserved, so it is a stable algorithm.
+# suppose array has k zero elements, then n-k writes are needed in worst case, and it happens when zeros are in the beginning
+# of the array
 
 # boundary check: no zeros, or all zeros
 def remove_zeros_statble(A):
@@ -25,8 +27,15 @@ def remove_zeros_statble(A):
 
 # loop through the array with two pointers from both end together, till they meet
 # if the left pointer points to non zero, leave it as it is,
-# if the right pointer points to zero, leave it as it is too.
-# if 
+# or, if the right pointer points to zero, leave it as it is too.
+# then, if the left pointer points to zero while right pointer points to non-zero, assign right element to left element
+# no need to swap as we dont care what are left on the right part of the array
+
+# k is number of non-zero elements
+# time complexity is O(n), and worst case the assignment needs to happen min(k, n-k) when zeros are in the beginning.
+# k is the number of zero elements.
+# 00123, assignment twice
+# 0000123, assignment three times
 
 def remove_zeros(A):
   i = 0
