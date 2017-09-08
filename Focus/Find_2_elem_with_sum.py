@@ -4,7 +4,7 @@
 # O(n*n)
 def solution(input, sum):
     for i in range(0, len(input)):
-        for j in range(1, len(input)):
+        for j in range(i+1, len(input)):
             if (input[i] + input[j] == sum):
                 return True
     return False
