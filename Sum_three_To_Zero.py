@@ -1,60 +1,94 @@
 # Question: Determine if any 3 integers in an array sum to 0.
 
-def brute_force2(arr):
-    for i in range(0, len(arr)):
-        for j in range (i, len(arr)):
-            for k in range(j, len(arr)):
-                if ((arr[i] + arr[j] + arr[k]) == 0):
-                    print(arr[i], arr[j], arr[k])
+# allow repetivive pick 
+# brute force, time complexity O(N*N*N)
+def find_3_sum_zero_bf(A):
+  size = len(A)
+  for i in range(size):
+    for j in range(i, size):
+      for k in range(j, size):
+        if A[i] + A[j] + A[k] == 0:
+          print(A[i], A[j], A[k])
 
-# dont allow repetitive pick
-def hashtable_soln(arr):
-    # create hashtable and insert all values in array
-    vals = {}
-    for i in range(len(arr)):
-      vals[arr[i]] = i
-    for i in range(len(arr)):
-      for j in range(i + 1, len(arr)):
-        sum = -(arr[i] + arr[j])
-        # Note: this will print out the same solution multiple times. For instance,
-        # [0,-1,1] will print 3 solutions. To print only unique solutions:
-        # if vals.has_key(sum) and j < vals[sum]:
-        # if sum in vals and i != vals[sum] and j != vals[sum]:
-        if sum in vals and j<vals[sum]:
-          print(arr[i], arr[j], sum)
+# Optimize the inner loop
+# allow repetivive pick 
+# brute force, time complexity O(N*N*N)
+def find_3_sum_zero_bf1(A):
+  size = len(A)
+  for i in range(size):
+    for j in range(i+1, size):
+      for k in range(j+1, size):
+        if A[i] + A[j] + A[k] == 0:
+          print(A[i], A[j], A[k])
 
-# dont allow repetitive pick and require no extra space
-def hashtable_soln_imp(A):
-  A=sorted(A)
-  for i, s in enumerate(A):
-    # if allow repetitive pick, min_index=i
-    min_index = i+1
-    max_index=len(A)-1
-    while (min_index<=max_index):
-      if A[min_index]+A[max_index]>-s:
-        max_index-=1
-      elif A[min_index]+A[max_index]<-s:
-        min_index+=1
-      else:
-        print(A[i], A[min_index],A[max_index])
+# Allow repetitive pick
+# Hash table to find the third element. O(N*N) and space is O(N)
+# Allow repetitive pick
+def hashtable_soln(A):
+  dic = {}
+  size = len(A)
+  for i in range(size):
+    # hash value is the last occurency index of key element
+    dic[A[i]] = i
+  # print(dic)
+  for i in range(size):
+    for j in range(i, size):
+      sum = -(A[i] + A[j])
+      # print(i, j, sum)
+      if sum in dic.keys() and j <= dic[sum]:
+        print(A[i], A[j], sum)
+
+# not allow repetitive pick
+def find_3_sum_zero(A):
+  dic = {}
+  size = len(A)
+  for i in range(size):
+    # hash value is the last occurency index of key element
+    dic[A[i]] = i
+  # print(dic)
+  for i in range(size):
+    for j in range(i+1, size):
+      sum = -(A[i] + A[j])
+      # print(i, j, sum)
+      # if sum in dic and i != dic[sum] and j != dic[sum]:
+      if sum in dic.keys() and j < dic[sum]:
+        print(A[i], A[j], sum)
+
+# O(n^2) solution that does not require extra space. Sorted the array
+# allowed repetitive pick
+# Loop through each element, and try to find a pair of elements with sum as -element
+def find_3_sum_zero2(A):
+  sorted(A)
+  size = len(A)
+  for i in range(size):
+    l = i
+    r = size-1
+    while l <= r:
+      if A[l] + A[r] == -A[i]:
+        print(A[i], A[l], A[r])
         break
+      elif A[l] + A[r] < -A[i]:
+        l = l+1
+      else:
+        r = r-1
+# not allow repetitive pick
+def find_3_sum_zero3(A):
+  sorted(A)
+  size = len(A)
+  for i in range(size):
+    l = i+1
+    r = size-1
+    while l <= r:
+      if A[l] + A[r] == -A[i]:
+        print(A[i], A[l], A[r])
+        break
+      elif A[l] + A[r] < -A[i]:
+        l = l+1
+      else:
+        r = r-1
 
-
-# allow repetitive pick
-def hashtable_soln1(arr):
-    # create hashtable and insert all values in array
-    vals = {}
-    for i in range(len(arr)):
-      vals[arr[i]] = i
-    for i in range(len(arr)):
-      for j in range(len(arr)):
-        sum = -(arr[i] + arr[j])
-        # Note: this will print out the same solution multiple times. For instance,
-        # [0,-1,1] will print 3 solutions. To print only unique solutions:
-        # if vals.has_key(sum) and j < vals[sum]:
-        if sum in vals:
-          print(arr[i], arr[j], sum)
-
-print( hashtable_soln_imp([0,-1,1]))
+# find_3_sum_zero_bf1([-1,0,1])
+# hashtable_soln([-1,0,1])
+find_3_sum_zero3([-1,0,1]
 
 
