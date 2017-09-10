@@ -33,6 +33,8 @@ def count_interpretation(arr):
   
   return count
 
+# improve time complexity to avoid repetitively interprate for sub-string. In this case, all substring only calculates once, 
+# so O(N), and space complexity is also O(N)
 def count_interpretation_cache(arr, index, cache):
   if index in cache:
     return cache[index]
