@@ -1,5 +1,11 @@
 import heapq
 
+# brute_force: sort array first, and return the first k element
+def brute_force(arr, k):
+  arr.sort(key = lambda item: item[0]*item[0] + item[1]*item[1])
+  print(arr)
+  return arr[0:k]
+
 # min-heap. 
 # Time complexity: O(n+klogn): O(n) to build the heap, this is possible using bottom-up heap construction
 # and to pop min element from heap for k times, while each pop takes O(logn)
