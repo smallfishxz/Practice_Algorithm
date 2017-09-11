@@ -64,3 +64,11 @@ print(dense_A)
 print(dense_B)
 
 print(dot_production2(dense_A, dense_B))
+
+# Following discussion:
+# if one array is much longer than the other one, it should be optimized to use binary search to search every element in shorter 
+# array in the longer array
+# Also the binary search could have a lower bound. As long as one match is found, the next lower bound could be the returnd index + 1
+# Howerver, this could be helpful too much if no match could be found, as no lower bound could be figured out
+# another opmization could be earlier break for the loop of shorter array, once it is found that the lower bound is already
+# bigger than the length of longer array, like [(1,x), (2,x), (100,x), (101,x)], [(1,x), (2,x), (3,x), (4,x), (5,x), (100,x)]
