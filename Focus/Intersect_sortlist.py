@@ -1,3 +1,7 @@
+# comparing with linear scan and binary search: 
+# binary search works better than linear scan when ratio of larger length to smaller is more than logarithmic order.
+# linear scan (LS) for length(a1) ~ length(a2) cases whereas binary search (BS) for length(a1) << length(a2) cases
+
 # linear scan with two pointers
 # if arr1 element < arr2 element, increase arr1 pointer
 # if arr2 element > arr2 element, increase arr2 pointer
@@ -25,6 +29,7 @@ def intersect_arr(arr1, arr2):
 # binary search
 # search each element in the shorter array in the longer array
 # have the lower boundary for the search to have better performance with shrinked search range
+# time: O(min(mlogn, nlogm))
 def b_search(A, l_bound, ele):
   low = l_bound
   high = len(A)
@@ -58,6 +63,7 @@ def intersect_arr2(arr1, arr2):
     if start >= len(arr2):
       break
   return result
-    
+ 
+
     
 print(intersect_arr2([1,3,3,4,7,11,107], [2,3,3,11,19]))
