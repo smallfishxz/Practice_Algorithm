@@ -28,7 +28,8 @@ def intersect_arr(arr1, arr2):
 
 # binary search
 # search each element in the shorter array in the longer array
-# have the lower boundary for the search to have better performance with shrinked search range
+# have the lower boundary for the search to have better performance with shrinked search range. this is only benificial 
+# when binary search could find a match index in the longer array. So it wont help much if there is not match in longer array 
 # time: O(min(m,n)log(max(m,n))))
 def b_search(A, l_bound, ele):
   low = l_bound
