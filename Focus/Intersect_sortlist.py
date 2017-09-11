@@ -59,9 +59,9 @@ def intersect_arr2(arr1, arr2):
       if not result or result[-1] != arr1[i]:
         result.append(arr1[i])
       start = idx + 1
-    # have this break, to improve perfomance for situation like [1,100,101,200], [1,2,3,4,5,100], so that break after search for 100 in arr1
-    if start >= len(arr2):
-      break
+      # have this break, to improve perfomance for situation like [1,100,101,200], [1,2,3,4,5,100], so that break after search for 100 in arr1
+      if start >= len(arr2):
+        break
   return result
  
 
