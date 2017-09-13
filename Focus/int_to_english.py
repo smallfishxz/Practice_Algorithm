@@ -1,3 +1,7 @@
+
+# 2**10 ~ 1k, 2**20 ~ 1M, 2**30 ~1B, 2**31 ~2b, leave one bit for signed
+# 32 bit could represent -2B to 2B number.
+
 # 1-19 is specially spelled out
 # we leave out 'zero' as for number as 30, we don't want to spell out as thirty zero
 # Also it is good to leave out empty for the first element as index 0, as it will make the following mapping easier
@@ -26,11 +30,12 @@ def triple_to_english(num):
 
 
 def int_to_english(num):
-
+  # 0 is edge case to specially handle
   if num == 0:
    return('zero')
 
   e_str = []
+  # minus number is also a speical case to handle
   if num < 0:
     num *= -1
     e_str.append('minus')
