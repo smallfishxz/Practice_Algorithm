@@ -12,10 +12,11 @@ def divide(num, div):
 # if reminder < 0, means the div is too big, and it should be within the lower part
 # if reminder >= div, means the div is too small, and it should be within the upper part
 # So to exit the loop, reminder >=0 or reminder < div
+# Also as cannot divide, so using the bit manipulation to get the //. 5>>1 vs. 5//2
 def divide2(num, div):
   l = 0
   h = num
-  mid = (l+h)//2
+  mid = (l+h) >> 1
   reminder = num - div*mid
   
   # while not (reminder >= 0 and reminder < div):
@@ -24,7 +25,7 @@ def divide2(num, div):
       h = mid
     else:
       l = mid
-    mid = (l+h)//2
+    mid = (l+h) >> 1
     reminder = num - div*mid 
   
   return (mid, reminder)
