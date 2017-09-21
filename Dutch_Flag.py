@@ -35,7 +35,7 @@ def dutch_flag3(A):
   h_idx = len(A) - 1
   m_idx = 0
 
-  while (m_idx < h_idx):
+  while (m_idx <= h_idx):
     t = get_category(A[m_idx])
     
     if t == 'LOW':
