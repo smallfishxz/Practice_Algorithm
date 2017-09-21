@@ -42,7 +42,7 @@ def find_closest2(arr, k):
   closest = []
   for i in range(k, size):
     d = - (arr[i][0]*arr[i][0]+arr[i][1]*arr[i][1])
-    if d > h[0][0]:
+    if d < h[0][0]:
       heapq.heappushpop(h, (d, arr[i]))
   return h
 
