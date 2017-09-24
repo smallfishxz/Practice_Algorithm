@@ -11,7 +11,7 @@ def is_included(i, j, m, visited):
 
 # A utility function to do DFS for a 2D 
 # boolean matrix. It only considers
-# the 8 neighbours as adjacent vertices
+# the 4 neighbours as adjacent vertices
 def DFS(matrix, i, j, visited):
   
   # index difference for the 4 cells surrounded the cell [i][j]. And these are the 4 concerning cells to do DFS
