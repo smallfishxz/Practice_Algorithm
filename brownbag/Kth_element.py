@@ -3,6 +3,8 @@
 
 import heapq
 
+# Time: klogk + (n-k)logk = nlogk
+# Space: k
 def kth_element_minheap(arr, k):
   size = len(arr)
   h = []
@@ -15,6 +17,8 @@ def kth_element_minheap(arr, k):
   return h[0]
 
 # build the 'maxheap' with Phtyon minheap to push the minus values of array into it.  
+# Time: (n-k+1)log(n-k+1) + klog(n-k+1) = (n+1)log(n-k+1)
+# space = n-k+1
 def kth_element_maxheap(arr, k):
   size = len(arr)
   h = []
