@@ -53,6 +53,11 @@ def kth_element_heap(arr, k):
         heapq.heappushpop(h_min, arr[i])
     return h_min[0]
 
+# In QuickSort, we pick a pivot element, then move the pivot element to its correct position and partition the array around it.
+# The idea is, not to do complete quicksort, but stop at the point where pivot itself is k’th smallest element. 
+# Also, not to recur for both left and right sides of pivot, but recur for one of them according to the position of pivot. 
+# The worst case time complexity of this method is O(n2), but it works in O(n) on average.
+  
 # Partition function is the same one as used in the quicksort algorithm
 # it returns the index of the pivot element, and before this index, all elements are smaller than pivot element
 # after this index, all elements are bigger than this element
