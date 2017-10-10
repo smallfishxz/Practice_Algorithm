@@ -10,7 +10,7 @@ def find_3_sum_zero_bf(A):
         if A[i] + A[j] + A[k] == 0:
           print(A[i], A[j], A[k])
 
-# Optimize the inner loop
+
 # allow repetivive pick 
 # brute force, time complexity O(N*N*N)
 def find_3_sum_zero_bf1(A):
@@ -22,6 +22,7 @@ def find_3_sum_zero_bf1(A):
           print(A[i], A[j], A[k])
 
 # Allow repetitive pick
+# Optimize the inner loop
 # Hash table to find the third element. O(N*N) and space is O(N)
 # Allow repetitive pick
 def hashtable_soln(A):
