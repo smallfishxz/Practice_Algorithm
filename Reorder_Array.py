@@ -23,14 +23,11 @@ def reorder_1(A,B):
     
     target_index=B[i]
     # swap A
-    tmp_a=A[i]
-    A[i]=A[target_index]
-    A[target_index]=tmp_a
-    
+    A[i], A[target_index] = A[target_index], A[i]
+
     # swap B accordingly
-    tmp_b=B[i]
-    B[i]=B[target_index]
-    B[target_index]=tmp_b
+    B[i], B[target_index] = B[target_index], B[i]
+
   return A
 
 def reorder_2(A,B):
