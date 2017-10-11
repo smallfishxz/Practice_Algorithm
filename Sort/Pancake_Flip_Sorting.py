@@ -21,9 +21,7 @@ def find_max1(A,n):
 def flip(A,i):
   start=0
   while (start<i):
-    tmp=A[i]
-    A[i]=A[start]
-    A[start]=tmp
+    A[i], A[start] = A[start], A[i]
     start+=1
     i-=1
   return A
