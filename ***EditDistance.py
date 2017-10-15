@@ -32,7 +32,7 @@
 # Do they walk through their solution with different test values?  Thorough tests include testing insertions/removals from the beginning and end, strings that are very different in length, prefixes of each other, etc etc.
 # Sometimes the candidate might traverse both strings from the front *and* back, noting when a difference is encountered in both directions.  They then compare how close their "cursors" are in both strings to draw a conclusion.  This can work, too, but it basically doubles the chance for errors, bounds violations, and off-by-one errors!
 
-Def OneEditApart(string s1, string s2):
+def OneEditApart(string s1, string s2):
   if len(s1) > len(s2): 
     s2, s1 = s1, s2
   size_delta = len(s2) - len(s1)
